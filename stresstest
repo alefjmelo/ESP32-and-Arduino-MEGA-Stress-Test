@@ -1,0 +1,57 @@
+// 11 (Eleven) LEDs functioning
+
+const int ledPins[11] = {2, 4, 18, 19, 21, 22, 23, 13, 12, 14, 27};  // Pinos dos LEDs
+
+void setup() {
+  // Configura todos os pinos dos LEDs como saída
+  for (int i = 0; i < 11; i++) {
+    pinMode(ledPins[i], OUTPUT);
+  }
+}
+
+void loop() {
+  // Teste de estresse 1: Variação rápida de intensidade (fade) para todos os LEDs
+  for (int cycle = 0; cycle < 5; cycle++) {  // Executa o fade 5 vezes
+    // Aumenta a intensidade de 0 a 255
+    for (int brightness = 0; brightness <= 255; brightness++) {
+      for (int i = 0; i < 11; i++) {
+        analogWrite(ledPins[i], brightness);  // Ajusta a intensidade de cada LED
+      }
+      delay(1);  // Atraso reduzido para intensidade rápida
+    }
+    // Diminui a intensidade de 255 a 0
+    for (int brightness = 255; brightness >= 0; brightness--) {
+      for (int i = 0; i < 11; i++) {
+        analogWrite(ledPins[i], brightness);  // Ajusta a intensidade de cada LED
+      }
+      delay(1);  // Atraso reduzido para intensidade rápida
+    }
+  }
+}
+
+// Only One LED functioning
+
+const int ledPin = 27;  // Pino do LED específico
+
+void setup() {
+  // Configura o pino do LED como saída
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // Teste de estresse: Variação rápida de intensidade (fade) para o LED 27
+  for (int cycle = 0; cycle < 5; cycle++) {  // Executa o fade 5 vezes
+    // Aumenta a intensidade de 0 a 255
+    for (int brightness = 0; brightness <= 255; brightness++) {
+      analogWrite(ledPin, brightness);  // Ajusta a intensidade do LED
+      delay(1);  // Atraso reduzido para intensidade rápida
+    }
+    
+    // Diminui a intensidade de 255 a 0
+    for (int brightness = 255; brightness >= 0; brightness--) {
+      analogWrite(ledPin, brightness);  // Ajusta a intensidade do LED
+      delay(1);  // Atraso reduzido para intensidade rápida
+    }
+  }
+}*/
+
